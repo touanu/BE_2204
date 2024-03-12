@@ -6,9 +6,10 @@ namespace CSharpCoBan
     {
         static void Main(string[] args)
         {
-            var ThucThi = new Bai1();
+            var BaiTap = new Buoi2();
+            BaiTap.TinhTongNhoHon();
 
-            ThucThi.TinhTong();
+            Console.ReadKey();
         }
     }
 }
