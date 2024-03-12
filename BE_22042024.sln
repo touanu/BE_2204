@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE_22042024", "BE_22042024\BE_22042024.csproj", "{A5C5385E-6DA4-45FD-9E77-60AA5B35FFB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpCoBan", "CSharpCoBan\CSharpCoBan.csproj", "{81942557-9D05-458F-A189-1CBBB537F852}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A5C5385E-6DA4-45FD-9E77-60AA5B35FFB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5C5385E-6DA4-45FD-9E77-60AA5B35FFB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5C5385E-6DA4-45FD-9E77-60AA5B35FFB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81942557-9D05-458F-A189-1CBBB537F852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81942557-9D05-458F-A189-1CBBB537F852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81942557-9D05-458F-A189-1CBBB537F852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81942557-9D05-458F-A189-1CBBB537F852}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
