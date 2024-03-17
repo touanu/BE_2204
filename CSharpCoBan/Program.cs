@@ -6,8 +6,8 @@ namespace CSharpCoBan
     {
         static void Main(string[] args)
         {
-            var BaiTap = new Buoi2();
-            BaiTap.TinhTongNhoHon();
+            var BaiTap = new BTVN_Buoi2();
+            BaiTap.Bai4();
 
             Console.ReadKey();
         }

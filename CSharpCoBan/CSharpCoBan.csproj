@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BTVN_Buoi1.cs" />
+    <Compile Include="BTVN_Buoi2.cs" />
     <Compile Include="Buoi2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

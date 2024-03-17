@@ -1,5 +1,10 @@
 ﻿using System;
 
+/*
+    Bài 1: Viết chương trình c# để tính tổng 2 số được nhập từ bàn phím
+    Bài 2: Viết chương trình c# để tính tổng các số chẵn nhỏ hơn số được nhập từ bàn phím 
+ */
+
 namespace CSharpCoBan
 {
     internal class BTVN_Buoi1
