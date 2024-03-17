@@ -112,26 +112,61 @@ namespace CSharpCoBan
 
         internal void Bai5()
         {
-            Console.Write("Hay doan so ngau nhien: ");
-            if (!int.TryParse(Console.ReadLine(), out int input))
-            {
-                Console.WriteLine("Ky tu vua nhap khong phai la so!");
-                return;
-            }
-
-            if (input <= 0)
-            {
-                Console.WriteLine("So da nhap la so 0 hoac la so am! Vui long nhap mot so duong");
-                return;
-            }
-
             Random rnd = new Random();
-            int soNgauNhien = rnd.Next();
+            int soNgauNhien = rnd.Next(0, 1000);
+
+            int input;
 
             do
             {
+                Console.Write("Hay doan so: ");
+                if (!int.TryParse(Console.ReadLine(), out input))
+                {
+                    Console.WriteLine("Ky tu vua nhap khong phai la so!");
+                    continue;
+                }
 
+                if (input < soNgauNhien)
+                {
+                    Console.WriteLine("Sai! So ngau nhien lon hon so da nhap!");
+                    continue;
+                }
+
+                if (input > soNgauNhien)
+                {
+                    Console.WriteLine("Sai! So ngau nhien nho hon so da nhap!");
+                }
             } while (input != soNgauNhien);
+
+            Console.WriteLine("Chinh xac!");
+        }
+
+        internal void Bai6() 
+        {
+            string matKhau;
+            bool valid = false;
+
+            do
+            {
+                Console.Write("Mat khau: ");
+                matKhau = Console.ReadLine();
+
+                if (matKhau.Length < 6 || matKhau.Length > 12)
+                {
+                    Console.WriteLine("Mat khau phai tu 6 den 12 ky tu! Vui long nhap lai.");
+                    continue;
+                }
+
+                if (!matKhau.Contains("@"))
+                {
+                    Console.WriteLine("Mat khau phai chua ky tu '@'! Vui long nhap lai.");
+                    continue;
+                }
+
+                valid = true;
+            } while (!valid);
+
+            Console.WriteLine("Mat khau hop le!");
         }
     }
 }
