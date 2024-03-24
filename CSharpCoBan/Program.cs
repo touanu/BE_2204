@@ -6,8 +6,10 @@ namespace CSharpCoBan
     {
         static void Main(string[] args)
         {
-            var BaiTap = new BTVN_Buoi2();
-            BaiTap.Bai6();
+            int[] mangMau = {1,5,6,3,2,4};
+
+            var BaiTap = new Buoi3();
+            BaiTap.SapXep(ref mangMau);
 
             Console.ReadKey();
         }
