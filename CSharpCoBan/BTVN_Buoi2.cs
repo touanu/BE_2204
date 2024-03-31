@@ -1,14 +1,5 @@
 ﻿using System;
 
-/*
-    Bài 1: In dãy số nguyên tố nhỏ hơn số được nhập vào từ bàn phím
-    Bài 2: Viết chương trình c# Nhập vào 1 chuỗi bất kỳ sau đó hãy đảo ngược chuổi đó
-    Bài 3: Đếm số lần xuất hiện của một ký tự trong chuỗi
-    Bài 4: sử dụng do-while để Tính giai thừa của một số
-    Bài 5: Sử dụng do-while để Đoán số ngẫu nhiên ( nhập vào bàn phím 1 số bất kỳ và so sánh với số được sinh ra từ Class Random trong c#)
-    Bài 6: Sử dụng do-while để kiểm tra mật khẩu được nhập từ bàn phím ( Mật khẩu phải từ 6-12 ký tự và có ký tự @) 
- */
-
 namespace CSharpCoBan
 {
     internal class BTVN_Buoi2
