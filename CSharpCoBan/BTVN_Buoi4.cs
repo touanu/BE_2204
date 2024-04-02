@@ -114,9 +114,9 @@ Lua chon: ");
                 Console.Clear();
                 Console.OutputEncoding = Encoding.UTF8;
                 Console.Write($@"
-1. Them sach moi
-2. Hien thi danh sach cac sach da them
-3. Tim kiem sach theo tieu de
+1. Them hoc sinh moi
+2. Hien thi danh sach cac hoc sinh da them
+3. Tim kiem hoc sinh theo ten
 0. Thoat chuong trinh
 
 Lua chon: ");
