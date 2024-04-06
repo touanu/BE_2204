@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Text;
 
 namespace CSharpCoBan
 {
@@ -7,8 +7,11 @@ namespace CSharpCoBan
     {
         static void Main()
         {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
             var BaiTap = new BTVN_Buoi4();
-            BaiTap.Bai1();
+            BaiTap.Menu();
         }
     }
 }
