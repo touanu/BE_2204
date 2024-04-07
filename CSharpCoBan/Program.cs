@@ -10,7 +10,7 @@ namespace CSharpCoBan
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
-            var BaiTap = new BTVN_Buoi4();
+            var BaiTap = new BTVN_Buoi5();
             BaiTap.Menu();
         }
     }

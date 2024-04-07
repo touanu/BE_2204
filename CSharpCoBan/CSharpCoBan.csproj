@@ -47,6 +47,7 @@
     <Compile Include="BTVN_Buoi2.cs" />
     <Compile Include="BTVN_Buoi3.cs" />
     <Compile Include="BTVN_Buoi4.cs" />
+    <Compile Include="BTVN_Buoi5.cs" />
     <Compile Include="Buoi2.cs" />
     <Compile Include="Buoi3.cs" />
     <Compile Include="Buoi5.cs" />

@@ -36,7 +36,7 @@ namespace CSharpCoBan
             return input;
         }
 
-        internal static float SoThuc()
+        internal static float SoThuc(bool SoAm = true)
         {
             float input;
             bool kiemTra = false;
@@ -45,6 +45,12 @@ namespace CSharpCoBan
                 if (!float.TryParse(Console.ReadLine(), out input))
                 {
                     Console.WriteLine("Ký tự vừa nhập không phải số! Vui lòng nhập lại");
+                    continue;
+                }
+
+                if (input <= 0 & SoAm)
+                {
+                    Console.WriteLine("Số đã nhập không phải số dương! Vui lòng nhập lại");
                     continue;
                 }
 
@@ -57,7 +63,21 @@ namespace CSharpCoBan
         internal static string Ten()
         {
             // https://stackoverflow.com/a/3819837
-            const string pattern = "^([a-zA-Z]|\\s|[À-ÿẠ-ỿ])+$";
+            const string pattern = 
+                "^([a-zA-Z]|" +
+                "\\s|" +
+                "[àáãạảăắằẳẵặâấầẩẫậ" +
+                "èéẹẻẽêềếểễệ" +
+                "đìíĩỉị" +
+                "òóõọỏôốồổỗộơớờởỡợ" +
+                "ùúũụủưứừửữự" +
+                "ỳỵỷỹý" +
+                "ÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬ" +
+                "ÈÉẸẺẼÊỀẾỂỄỆ" +
+                "ĐÌÍĨỈỊ" +
+                "ÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢ" +
+                "ÙÚŨỤỦƯỨỪỬỮỰ" +
+                "ỲỴỶỸÝ])+$";
             string input;
             bool kiemTra = false;
             
