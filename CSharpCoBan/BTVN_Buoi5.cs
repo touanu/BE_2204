@@ -63,13 +63,13 @@ namespace CSharpCoBan
                             dsNhanVien = NhapDanhSach();
                             break;
                         case 2:
-                            HienThiDanhSach();
+                            HienThiDanhSach(dsNhanVien);
                             break;
                         case 3:
                             SapXepTheoNgaySinh();
                             break;
                         case 4:
-                            HienThiDanhSach(5);
+                            LocNhanVienTheoNamLamViec(5);
                             break;
                         default:
                             break;
@@ -136,7 +136,7 @@ namespace CSharpCoBan
                 return dsNhanVien;
             }
 
-            internal static void HienThiDanhSach(int? locSoNamLamViec = null)
+            internal static void HienThiDanhSach(NhanVien[] dsNhanVien)
             {
                 string format = "{0,-7}{1,-25}{2,-16:C0}{3,-16}";
                 string header = string.Format(format,
@@ -148,12 +148,6 @@ namespace CSharpCoBan
 
                 foreach (var item in dsNhanVien)
                 {
-                    TimeSpan soNamLamViec = DateTime.Now - item.NgayVaoLam;
-                    if (locSoNamLamViec.HasValue & soNamLamViec.TotalDays < (365*5+1))
-                    {
-                        continue;
-                    }
-
                     string output = string.Format(provider, format,
                             item.MaNV,
                             item.HoDem + " " + item.Ten,
@@ -167,7 +161,14 @@ namespace CSharpCoBan
             internal static void SapXepTheoNgaySinh()
             {
                 Array.Sort(dsNhanVien);
-                HienThiDanhSach();
+                HienThiDanhSach(dsNhanVien);
+            }
+
+            internal static void LocNhanVienTheoNamLamViec(int soNam)
+            {
+                var nhanvien = Array.FindAll(dsNhanVien, item => 
+                    (DateTime.Now - item.NgayVaoLam).TotalDays >= (365 * soNam));
+                HienThiDanhSach(nhanvien);
             }
         }
 

@@ -52,12 +52,12 @@ namespace CSharpCoBan
                 {
                     Console.Clear();
                     Console.Write($@"
-                        1. Them sach moi
-                        2. Hien thi danh sach cac sach da them
-                        3. Tim kiem sach theo tieu de
-                        0. Thoat chuong trinh
+                        1. Thêm sách mới
+                        2. Hiện thị danh sách tất cả quyển sách
+                        3. Tìm kiếm sách theo tiêu đề
+                        0. Thoát chương trình
 
-                        Lua chon: ");
+                        Lựa chọn: ");
 
                     luaChon = Nhap.SoNguyen(false, 0, 3);
 
@@ -92,30 +92,30 @@ namespace CSharpCoBan
                 Sach.Nam = Nhap.SoNguyen(false, 0, DateTime.Now.Year);
 
                 TuSach.Add(Sach);
-                Console.WriteLine($"Da them quyen sach {Sach.TieuDe} vao tu sach!");
+                Console.WriteLine($"Đã thêm {Sach.TieuDe} vào tủ sách!");
             }
 
             internal static void InToanBoSach(List<Sach> TuSach)
             {
+                Console.WriteLine("\nCác sách có trong tủ sách:");
                 foreach (var sach in TuSach)
                 {
-                    Console.WriteLine("\nCac sach co trong tu sach:");
                     Console.WriteLine(sach.ToString() + "\n");
                 }
             }
 
             internal static void TimKiemSach(List<Sach> TuSach)
             {
-                Console.Write("\nNhap ten sach can tim: ");
+                Console.Write("\nNhập tên sách cần tìm: ");
                 string TieuDe = Console.ReadLine();
 
                 foreach (var sach in TuSach)
                 {
                     if (sach.TieuDe == TieuDe)
                     {
-                        Console.WriteLine("Quyen sach " + sach.TieuDe);
-                        Console.WriteLine("Tac gia " + sach.TacGia);
-                        Console.WriteLine("Xuat ban nam " + sach.Nam);
+                        Console.WriteLine("Quyển sách " + sach.TieuDe);
+                        Console.WriteLine("Tác giả " + sach.TacGia);
+                        Console.WriteLine("Xuất bản năm " + sach.Nam);
                     }
                 }
             }
@@ -139,12 +139,12 @@ namespace CSharpCoBan
                 {
                     Console.Clear();
                     Console.Write($@"
-                        1. Them hoc sinh moi
-                        2. Hien thi danh sach cac hoc sinh da them
-                        3. Tim kiem hoc sinh theo ten
-                        0. Thoat chuong trinh
+                        1. Thêm học sinh mới
+                        2. Hiện thị danh sách các học sinh đã thêm
+                        3. Tìm kiếm học sinh theo tên
+                        0. Thoát chương trình
 
-                        Lua chon: ");
+                        Lựa chọn: ");
 
                     luaChon = Nhap.SoNguyen(false, 0, 3);
 
@@ -170,30 +170,30 @@ namespace CSharpCoBan
             internal static void ThemSachVaoDS(ref List<HocSinh> DSHocSinh)
             {
                 var HS = new HocSinh();
-                Console.WriteLine("\nNhap vao cac thong tin cua sach");
-                Console.Write("Tieu de: ");
+                Console.WriteLine("\nNhập vào các thông tin của học sinh");
+                Console.Write("Họ tên: ");
                 HS.HoTen = Console.ReadLine();
-                Console.Write("Tac Gia: ");
+                Console.Write("Tuổi: ");
                 HS.Tuoi = Nhap.SoNguyen(false, 0, 122);
-                Console.Write("Nam xuat ban: ");
+                Console.Write("Điểm trung bình: ");
                 HS.DiemTB = Nhap.SoThuc();
 
                 DSHocSinh.Add(HS);
-                Console.WriteLine($"Da them {HS.HoTen} vao danh sach!");
+                Console.WriteLine($"Đã thêm {HS.HoTen} vào danh sách!");
             }
 
             internal static void InToanBoHS(List<HocSinh> DSHocSinh)
             {
+                Console.WriteLine("\nTất cả học sinh có trong danh sách:");
                 foreach (var hs in DSHocSinh)
                 {
-                    Console.WriteLine("\nTat ca hoc sinh co trong danh sach:");
                     Console.WriteLine(hs.HoTen + "\n");
                 }
             }
 
             internal static void TimKiemHS(List<HocSinh> DSHocSinh)
             {
-                Console.WriteLine("\nNhap ho ten cua hoc sinh can tim: ");
+                Console.WriteLine("\nNhập họ tên của học sinh cần tìm: ");
                 string HoTen = Console.ReadLine();
 
                 foreach (var hs in DSHocSinh)
@@ -201,8 +201,8 @@ namespace CSharpCoBan
                     if (hs.HoTen == HoTen)
                     {
                         Console.WriteLine("Em " + hs.HoTen);
-                        Console.WriteLine(hs.Tuoi + "tuoi");
-                        Console.WriteLine("Diem trung binh: " + hs.DiemTB);
+                        Console.WriteLine(hs.Tuoi + "tuổi");
+                        Console.WriteLine("Điểm trung bình: " + hs.DiemTB);
                     }
                 }
             }
@@ -235,9 +235,9 @@ namespace CSharpCoBan
                     TenKhachHang = tenKH;
                 }
                 public string MaHoaDon { get; set; }
-                public DateTime NgayPhatHanh {  get; set; }
-                public double TongTien {  get; set; }
-                public double SoTienNo {  get; set; }
+                public DateTime NgayPhatHanh { get; set; }
+                public double TongTien { get; set; }
+                public double SoTienNo { get; set; }
                 public int TrangThaiNo { get; set; }
                 public string TenKhachHang { get; set; }
             }
@@ -296,9 +296,9 @@ namespace CSharpCoBan
                     Console.Write("Ngày phát hành: ");
                     dsHoaDon[i].NgayPhatHanh = Nhap.NgayThang();
                     Console.Write("Tổng tiền: ");
-                    dsHoaDon[i].TongTien = Nhap.SoNguyen();
+                    dsHoaDon[i].TongTien = Nhap.SoNguyen(false);
                     Console.Write("Số tiền nợ: ");
-                    dsHoaDon[i].SoTienNo = Nhap.SoNguyen();
+                    dsHoaDon[i].SoTienNo = Nhap.SoNguyen(false);
                     dsHoaDon[i].TrangThaiNo = dsHoaDon[i].SoTienNo == 0 ? 0 : 1;
                     Console.Write("Tên khách hàng: ");
                     dsHoaDon[i].TenKhachHang = Nhap.Ten();
