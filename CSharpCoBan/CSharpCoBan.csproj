@@ -52,6 +52,7 @@
     <Compile Include="Buoi2.cs" />
     <Compile Include="Buoi3.cs" />
     <Compile Include="Buoi5.cs" />
+    <Compile Include="BTVN_Buoi7.cs" />
     <Compile Include="Nhap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
