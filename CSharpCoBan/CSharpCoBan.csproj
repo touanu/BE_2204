@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,22 +62,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BTVN_Buoi1.cs" />
-    <Compile Include="BTVN_Buoi2.cs" />
-    <Compile Include="BTVN_Buoi3.cs" />
-    <Compile Include="BTVN_Buoi4.cs" />
-    <Compile Include="BTVN_Buoi5.cs" />
-    <Compile Include="BTVN_Buoi6.cs" />
-    <Compile Include="Buoi2.cs" />
-    <Compile Include="Buoi3.cs" />
-    <Compile Include="Buoi5.cs" />
-    <Compile Include="BTVN_Buoi7.cs" />
+    <Compile Include="BTVN\BTVN_Buoi1.cs" />
+    <Compile Include="BTVN\BTVN_Buoi2.cs" />
+    <Compile Include="BTVN\BTVN_Buoi3.cs" />
+    <Compile Include="BTVN\BTVN_Buoi4.cs" />
+    <Compile Include="BTVN\BTVN_Buoi5.cs" />
+    <Compile Include="BTVN\BTVN_Buoi6.cs" />
+    <Compile Include="BTVN\BTVN_Buoi8.cs" />
+    <Compile Include="BTVN\BTVN_Buoi9.cs" />
+    <Compile Include="ThucHanh\Buoi2.cs" />
+    <Compile Include="ThucHanh\Buoi3.cs" />
+    <Compile Include="ThucHanh\Buoi5.cs" />
+    <Compile Include="BTVN\BTVN_Buoi7.cs" />
     <Compile Include="Nhap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE2024.DataAccess\BE2024.DataAccess.csproj">
+      <Project>{ce1548e1-f402-4b23-81d0-67a095815e41}</Project>
+      <Name>BE2024.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLibs\CommonLibs.csproj">
+      <Project>{25d5dc73-aa26-40e6-88c6-9e499a51623a}</Project>
+      <Name>CommonLibs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

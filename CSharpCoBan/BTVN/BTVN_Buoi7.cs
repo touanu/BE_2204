@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using static CSharpCoBan.BTVN_Buoi5.Bai1;
 
 namespace CSharpCoBan
 {
@@ -12,7 +10,7 @@ namespace CSharpCoBan
         public void Menu()
         {
             Console.Write("Chọn bài tập: ");
-            int luaChon = Nhap.SoNguyen(false, 0, 2);
+            int luaChon = Nhap.SoNguyen(false, 0, 3);
 
             switch (luaChon)
             {
@@ -156,7 +154,9 @@ namespace CSharpCoBan
                                 "2. Nhân viên parttime\n" +
                                 "3. Nhân viên thực tập\n" +
                                 "Chọn kiểu nhân viên: ");
-                    NhanVien nv = TaoNhanVien(Nhap.SoNguyen());
+
+                    NhanVien nv = TaoNhanVien(Nhap.SoNguyen(false, 1, 3));
+
                     nv.MaNV = $"NV{i:D4}";
                     Console.Write("Họ tên: ");
                     nv.Ten = Nhap.Ten();
@@ -261,10 +261,10 @@ namespace CSharpCoBan
 
             private static void AddNewProduct()
             {
-                Console.WriteLine("Nhập số lượng sản phẩm: ");
+                Console.Write("Nhập số lượng sản phẩm: ");
                 int n = Nhap.SoNguyen();
 
-                for (int i = 0; i <= n; i++)
+                for (int i = 0; i < n; i++)
                 {
                     Console.WriteLine("Nhập vào sản phẩm thứ " + (i + 1));
                     string idSP = $"P{products.Count+1:D4}";

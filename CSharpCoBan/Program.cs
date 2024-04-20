@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpCoBan.BTVN;
+using System;
 using System.Text;
 
 namespace CSharpCoBan
@@ -10,8 +11,8 @@ namespace CSharpCoBan
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
-            var BaiTap = new BTVN_Buoi7();
-            BaiTap.Menu();
+            BTVN_Buoi9.Bai3();
         }
     }
+    
 }
