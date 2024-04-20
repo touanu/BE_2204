@@ -1,5 +1,6 @@
 ﻿using BE2024.DataAccess.Layers;
 using BE2024.DataAccess.Objects;
+using CommonLibs;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -19,40 +20,43 @@ namespace BE2024.DataAccess.Implementations
         private readonly List<Product> buyList = new List<Product>();
         private int BuyQuantity { get; set; }
         private double TotalBill = 0;
-        public ReturnData BuyProduct(Product product)
+        public ReturnData BuyProduct(string productID, int buyQuantity)
         {
             ReturnData returnData = new ReturnData();
             
-            if (product == null)
+            if (string.IsNullOrEmpty(productID) || Validation.IsContainSpecialCharacters(productID))
             {
                 returnData.ErrorCode = -1;
-                returnData.Message = "Sản phẩm không được để trống!";
+                returnData.Message = "Mã sản phẩm không hợp lệ";
                 return returnData;
             }
 
-            int index = products.IndexOf(product);
-            if (index == -1)
+            if (!products.Exists(item => item.ID == productID))
             {
                 returnData.ErrorCode = -2;
                 returnData.Message = "Sản phẩm này không tồn tại!";
                 return returnData;
             }
-
-            if (product.Quantity <= 0 || product.Quantity > products[index].Quantity)
+            Product product = products.Find(item => item.ID == productID);
+            
+            if (buyQuantity <= 0 || buyQuantity > product.Quantity)
             {
                 returnData.ErrorCode = -3;
                 returnData.Message = "Số lượng không hợp lệ!";
                 return returnData;
             }
 
-            buyList.Add(product);
-            BuyQuantity += product.Quantity;
-
-            if (product.Quantity == products[index].Quantity)
+            if (buyQuantity == product.Quantity)
                 products.Remove(product);
             else
-                products[index].Quantity -= product.Quantity;
-            
+            {
+                int index = products.IndexOf(product);
+                products[index].Quantity -= buyQuantity;
+            }
+
+            product.Quantity = buyQuantity;
+            buyList.Add(product);
+            BuyQuantity += product.Quantity;
             return returnData;
         }
         public string ShowBuyProducts()
@@ -60,9 +64,9 @@ namespace BE2024.DataAccess.Implementations
             string footer;
 
             if (BuyQuantity > 5)
-                footer = $"\nThành tiền: {TotalBill * 5} | Chiết khấu: 5%";
+                footer = $"\nThành tiền: {TotalBill * 5:C0} | Chiết khấu: 5%";
             else
-                footer = $"\nThành tiền: {TotalBill} | Chiết khấu: 0%";
+                footer = $"\nThành tiền: {TotalBill:C0} | Chiết khấu: 0%";
 
             return ShowProduct(buyList) + footer;
         }

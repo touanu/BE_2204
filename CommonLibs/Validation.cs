@@ -1,18 +1,11 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CommonLibs
 {
     public class Validation
     {
-        public static bool IsNegative(int number)
-        {
-            if (number < 0)
-                return true;
-
-            return false;
-        }
-
         public static bool IsNumber(string input)
         {
             if (!string.IsNullOrEmpty(input))
@@ -59,6 +52,15 @@ namespace CommonLibs
         {
             // https://stackoverflow.com/a/18251942
             return input.Any(char.IsDigit);
+        }
+
+        public static bool IsContainSpecialCharacters(string input)
+        {
+            // https://stackoverflow.com/a/2522949
+            char[] SpecialChars = "!@#$%^&*()".ToCharArray();
+            int indexOf = input.IndexOfAny(SpecialChars);
+
+            return indexOf != -1;
         }
 
         public static bool IsContainHTMLTags(string input)
