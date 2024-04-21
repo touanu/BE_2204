@@ -2,8 +2,6 @@
 {
     public class Product
     {
-        public Product() { }
-
         public Product(string id, string name, double price, int quantity)
         {
             ID = id;

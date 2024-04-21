@@ -7,6 +7,62 @@ namespace CSharpCoBan.BTVN
     internal static class BTVN_Buoi9
     {
         
+        public static void Bai2()
+        {
+            StudentRegister studentRegister = new StudentRegister();
+            int luaChon;
+            do
+            {
+                Console.Clear();
+                Console.Write($@"
+                        1. Nhập thông tin cho khoá học
+                        2. Đăng kí cho học viên
+                        3. Hiển thị danh sách học viên đăng kí
+                        0. Thoát chương trình
+
+                        Lựa chọn: ");
+
+                luaChon = Nhap.SoNguyen(false, 0, 3);
+
+                switch (luaChon)
+                {
+                    case 1:
+                        Console.WriteLine("Nhập vào thông tin khoá học");
+                        Console.Write("Tên khoá học: ");
+                        string courseName = Console.ReadLine();
+                        Console.Write("Mô tả khoá học: ");
+                        string courseDesciption = Console.ReadLine();
+                        Console.Write("Học phí: ");
+                        double courseTuition = Nhap.SoNguyen();
+                        Console.Write("Ngày khai giảng (dạng dd/MM/yyyy): ");
+                        DateTime courseOpenDate = Nhap.NgayThang();
+                        
+                        ReturnData courseReturn = studentRegister.UpdateCourseInfo(
+                            courseName, courseDesciption, courseTuition, courseOpenDate);
+                        Console.WriteLine(courseReturn.Message);
+                        break;
+                    case 2:
+                        Student student = new Student();
+                        Console.WriteLine("Nhập vào thông tin của học viên");
+                        Console.Write("Tên học viên: ");
+                        student.FullName = Console.ReadLine();
+                        Console.Write("Ngày sinh (dd/MM/yyyy): ");
+                        student.Birthday = Nhap.NgayThang();
+
+                        ReturnData registerReturn = studentRegister.Register(student);
+                        Console.WriteLine(registerReturn.Message);
+                        break;
+                    case 3:
+                        string listStudents = studentRegister.ShowAllStudents();
+                        Console.WriteLine(listStudents);
+                        break;
+                    default:
+                        break;
+                }
+
+                Console.ReadLine();
+            } while (luaChon != 0);
+        }
 
         public static void Bai3()
         {

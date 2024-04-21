@@ -42,13 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\StudentRegister.cs" />
     <Compile Include="Implementations\DsHangHoa.cs" />
     <Compile Include="Implementations\ProductManager.cs" />
+    <Compile Include="Implementations\ProductManager2.cs" />
+    <Compile Include="Layers\IStudentRegister.cs" />
     <Compile Include="Layers\IProductManager.cs" />
+    <Compile Include="Objects\Course.cs" />
     <Compile Include="Objects\NhanVien.cs" />
     <Compile Include="Objects\HangHoa.cs" />
     <Compile Include="Objects\Product.cs" />
+    <Compile Include="Objects\Product2.cs" />
     <Compile Include="Objects\ReturnData.cs" />
+    <Compile Include="Objects\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
