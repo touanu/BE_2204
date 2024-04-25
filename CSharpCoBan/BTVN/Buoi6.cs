@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi6
+    internal class Buoi6
     {
         public struct HocSinh
         {
@@ -18,7 +18,7 @@ namespace CSharpCoBan
         internal void Menu()
         {
             Console.Write("Chọn bài tập: ");
-            int luaChon = Nhap.SoNguyen(false, 0, 3);
+            int luaChon = Input.Integer(false, 0, 3);
 
             switch (luaChon)
             {
@@ -78,7 +78,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -106,7 +106,7 @@ namespace CSharpCoBan
                 Console.Write("Họ tên: ");
                 HS.HoTen = Console.ReadLine();
                 Console.Write("Tuổi: ");
-                HS.NgaySinh = Nhap.NgayThang();
+                HS.NgaySinh = Input.Date();
 
                 dsHocSinh.Add(HS);
                 Console.WriteLine($"Đã thêm {HS.HoTen} vào danh sách!");
@@ -125,9 +125,9 @@ namespace CSharpCoBan
             internal static void TimKiemHS(Generic<HocSinh> dsHocSinh)
             {
                 Console.Write("\nNhập họ tên của học sinh cần tìm: ");
-                string hoTen = Nhap.Ten();
+                string hoTen = Input.Name();
                 Console.Write("Tuổi: ");
-                DateTime ngaySinh = Nhap.NgayThang();
+                DateTime ngaySinh = Input.Date();
 
                 HocSinh hocSinh = new HocSinh(hoTen, ngaySinh);
 
@@ -180,7 +180,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -203,7 +203,7 @@ namespace CSharpCoBan
                 Console.Write("Họ tên: ");
                 string hoTen = Console.ReadLine();
                 Console.Write("Ngày sinh: ");
-                DateTime ngaySinh = Nhap.NgayThang();
+                DateTime ngaySinh = Input.Date();
 
                 dsSV.AddItem(hoTen, ngaySinh);
                 Console.WriteLine($"Đã thêm {hoTen} vào danh sách!");
@@ -212,7 +212,7 @@ namespace CSharpCoBan
             internal static void TimKiemSV(SinhVien dsSV)
             {
                 Console.Write("\nNhập họ tên của học sinh cần tìm: ");
-                string hoTen = Nhap.Ten();
+                string hoTen = Input.Name();
 
                 var sv = dsSV.GetItem(hoTen);
 

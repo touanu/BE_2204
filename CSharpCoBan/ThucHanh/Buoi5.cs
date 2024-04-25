@@ -2,7 +2,7 @@
 using System.Data;
 using System.Globalization;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.ThucHanh
 {
     internal class TinhNgaySong
     {

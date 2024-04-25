@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi7
+    internal class Buoi7
     {
         public void Menu()
         {
             Console.Write("Chọn bài tập: ");
-            int luaChon = Nhap.SoNguyen(false, 0, 3);
+            int luaChon = Input.Integer(false, 0, 3);
 
             switch (luaChon)
             {
@@ -109,7 +109,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -143,7 +143,7 @@ namespace CSharpCoBan
             private static NhanVien[] NhapNhanVien()
             {
                 Console.Write("Nhập vào số nhân viên: ");
-                int n = Nhap.SoNguyen(false);
+                int n = Input.Integer(false);
                 NhanVien[] dsNhanVien = new NhanVien[n];
 
                 for (int i = 0; i < n; i++)
@@ -155,11 +155,11 @@ namespace CSharpCoBan
                                 "3. Nhân viên thực tập\n" +
                                 "Chọn kiểu nhân viên: ");
 
-                    NhanVien nv = TaoNhanVien(Nhap.SoNguyen(false, 1, 3));
+                    NhanVien nv = TaoNhanVien(Input.Integer(false, 1, 3));
 
                     nv.MaNV = $"NV{i:D4}";
                     Console.Write("Họ tên: ");
-                    nv.Ten = Nhap.Ten();
+                    nv.Ten = Input.Name();
                     dsNhanVien[i] = nv;
                     Console.WriteLine();
                 }
@@ -235,7 +235,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    choose = Nhap.SoNguyen(false, 0, 4);
+                    choose = Input.Integer(false, 0, 4);
 
                     switch (choose)
                     {
@@ -262,16 +262,16 @@ namespace CSharpCoBan
             private static void AddNewProduct()
             {
                 Console.Write("Nhập số lượng sản phẩm: ");
-                int n = Nhap.SoNguyen();
+                int n = Input.Integer();
 
                 for (int i = 0; i < n; i++)
                 {
                     Console.WriteLine("Nhập vào sản phẩm thứ " + (i + 1));
                     string idSP = $"P{products.Count+1:D4}";
                     Console.Write("Tên sản phẩm: ");
-                    string tenSP = Nhap.Ten();
+                    string tenSP = Input.Name();
                     Console.Write("Giá bán: ");
-                    float giaBan = Nhap.SoThuc(false);
+                    float giaBan = Input.Float(false);
 
                     products.Insert(idSP, tenSP, giaBan);
                 }
@@ -304,9 +304,9 @@ namespace CSharpCoBan
                 }
 
                 Console.Write("Tên sản phẩm: ");
-                string name = Nhap.Ten();
+                string name = Input.Name();
                 Console.Write("Giá bán: ");
-                float price = Nhap.SoThuc(false);
+                float price = Input.Float(false);
 
                 products.Update(id, name, price);
             }

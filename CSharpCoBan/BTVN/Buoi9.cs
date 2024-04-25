@@ -4,7 +4,7 @@ using BE2024.DataAccess.Objects;
 
 namespace CSharpCoBan.BTVN
 {
-    internal static class BTVN_Buoi9
+    internal static class Buoi9
     {
         
         public static void Bai2()
@@ -22,7 +22,7 @@ namespace CSharpCoBan.BTVN
 
                         Lựa chọn: ");
 
-                luaChon = Nhap.SoNguyen(false, 0, 3);
+                luaChon = Input.Integer(false, 0, 3);
 
                 switch (luaChon)
                 {
@@ -33,9 +33,9 @@ namespace CSharpCoBan.BTVN
                         Console.Write("Mô tả khoá học: ");
                         string courseDesciption = Console.ReadLine();
                         Console.Write("Học phí: ");
-                        double courseTuition = Nhap.SoNguyen();
+                        double courseTuition = Input.Integer();
                         Console.Write("Ngày khai giảng (dạng dd/MM/yyyy): ");
-                        DateTime courseOpenDate = Nhap.NgayThang();
+                        DateTime courseOpenDate = Input.Date();
                         
                         ReturnData courseReturn = studentRegister.UpdateCourseInfo(
                             courseName, courseDesciption, courseTuition, courseOpenDate);
@@ -47,7 +47,7 @@ namespace CSharpCoBan.BTVN
                         Console.Write("Tên học viên: ");
                         student.FullName = Console.ReadLine();
                         Console.Write("Ngày sinh (dd/MM/yyyy): ");
-                        student.Birthday = Nhap.NgayThang();
+                        student.Birthday = Input.Date();
 
                         ReturnData registerReturn = studentRegister.Register(student);
                         Console.WriteLine(registerReturn.Message);
@@ -83,7 +83,7 @@ namespace CSharpCoBan.BTVN
                 }
 
                 Console.Write("Số lượng: ");
-                int quantity = Nhap.SoNguyen(false);
+                int quantity = Input.Integer(false);
 
                 ReturnData buy = productManager.BuyProduct(productID, quantity);
                 Console.WriteLine(buy.Message);

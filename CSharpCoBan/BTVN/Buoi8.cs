@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi8
+    internal class Buoi8
     {
         class Bai1
         {
             internal static void Chay()
             {
                 Console.Write("Nhập vào số nhân viên: ");
-                int n = Nhap.SoNguyen(false);
+                int n = Input.Integer(false);
                 NhanVien[] dsNhanVien = new NhanVien[n];
 
                 for (int i = 0; i < n; i++)
@@ -27,7 +27,7 @@ namespace CSharpCoBan.BTVN
                                 "3. Nhân viên thực tập\n" +
                                 "Chọn kiểu nhân viên: ");
                     NhanVien nv = new NVFulltime();
-                    int loaiNhanVien = Nhap.SoNguyen(false, 1, 3);
+                    int loaiNhanVien = Input.Integer(false, 1, 3);
 
                     switch (loaiNhanVien)
                     {
@@ -43,7 +43,7 @@ namespace CSharpCoBan.BTVN
 
                     nv.MaNV = $"NV{i:D4}";
                     Console.Write("Họ tên: ");
-                    nv.Ten = Nhap.Ten();
+                    nv.Ten = Input.Name();
                     dsNhanVien[i] = nv;
                 }
             }
@@ -59,7 +59,7 @@ namespace CSharpCoBan.BTVN
             internal static HangHoa NhapHang()
             {
                 HangHoa hang = new DienTu();
-                int loaiNhanVien = Nhap.SoNguyen(false, 1, 3);
+                int loaiNhanVien = Input.Integer(false, 1, 3);
 
                 switch (loaiNhanVien)
                 {
@@ -75,11 +75,11 @@ namespace CSharpCoBan.BTVN
                 Console.Write("Nhập vào mã hàng: ");
                 hang.MaHang = Console.ReadLine();
                 Console.Write("Nhập vào tên hàng: ");
-                hang.TenHang = Nhap.Ten();
+                hang.TenHang = Input.Name();
                 Console.Write("Nhập vào giá tiền: ");
-                hang.GiaTien = Nhap.SoNguyen(false);
+                hang.GiaTien = Input.Integer(false);
                 Console.Write("Nhập vào ngày hết hạn: ");
-                hang.NgayHetHan = Nhap.NgayThang();
+                hang.NgayHetHan = Input.Date();
 
                 return hang;
             }

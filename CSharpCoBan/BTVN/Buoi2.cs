@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi2
+    internal class Buoi2
     {
         internal void Bai1()
         {

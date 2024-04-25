@@ -5,9 +5,9 @@
     Bài 2: Viết chương trình c# để tính tổng các số chẵn nhỏ hơn số được nhập từ bàn phím 
  */
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi1
+    internal class Buoi1
     {
         internal void Bai1()
         {

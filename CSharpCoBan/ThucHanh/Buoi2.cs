@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.ThucHanh
 {
     internal class Buoi2
     {

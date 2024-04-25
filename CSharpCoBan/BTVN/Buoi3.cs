@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi3
+    internal class Buoi3
     {
         internal void Main()
         {
@@ -22,7 +22,7 @@ namespace CSharpCoBan
 
                 Lua chon: ");
 
-            int luaChon = Nhap.SoNguyen(false, 0, 6);
+            int luaChon = Input.Integer(false, 0, 6);
 
             switch (luaChon)
             {
@@ -50,14 +50,14 @@ namespace CSharpCoBan
         internal List<int> Bai1()
         {
             Console.Write("Nhap vao do rong cua mang: ");
-            int n = Nhap.SoNguyen();
+            int n = Input.Integer();
             int[] mangSN = new int[n];
 
             Console.WriteLine("Nhap vao mang so nguyen");
             for (int i = 0; i < mangSN.Length; i++)
             {
                 Console.Write("So thu " + (i+1) + " = ");
-                mangSN[i] = Nhap.SoNguyen();
+                mangSN[i] = Input.Integer();
             }
 
             return mangSN.ToList();

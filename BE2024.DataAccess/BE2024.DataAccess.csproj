@@ -42,19 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\StudentRegister.cs" />
-    <Compile Include="Implementations\DsHangHoa.cs" />
-    <Compile Include="Implementations\ProductManager.cs" />
-    <Compile Include="Implementations\ProductManager2.cs" />
-    <Compile Include="Layers\IStudentRegister.cs" />
-    <Compile Include="Layers\IProductManager.cs" />
-    <Compile Include="Objects\Course.cs" />
-    <Compile Include="Objects\NhanVien.cs" />
-    <Compile Include="Objects\HangHoa.cs" />
-    <Compile Include="Objects\Product.cs" />
-    <Compile Include="Objects\Product2.cs" />
+    <Compile Include="Implementations\Buoi10\BookingManagement.cs" />
+    <Compile Include="Implementations\Buoi10\RoomManagement.cs" />
+    <Compile Include="Implementations\Buoi9\StudentRegister.cs" />
+    <Compile Include="Implementations\Buoi8\DsHangHoa.cs" />
+    <Compile Include="Implementations\Buoi9\ProductManager.cs" />
+    <Compile Include="Implementations\Buoi9\ProductManager2.cs" />
+    <Compile Include="Layers\Buoi10\IBookingManagement.cs" />
+    <Compile Include="Layers\Buoi10\IRoomManagement.cs" />
+    <Compile Include="Layers\Buoi9\IStudentRegister.cs" />
+    <Compile Include="Layers\Buoi9\IProductManager.cs" />
+    <Compile Include="Objects\Buoi10\Customer.cs" />
+    <Compile Include="Objects\Buoi10\Room.cs" />
+    <Compile Include="Objects\Buoi10\BookingOrder.cs" />
+    <Compile Include="Objects\Buoi9\Course.cs" />
+    <Compile Include="Objects\Buoi8\NhanVien.cs" />
+    <Compile Include="Objects\Buoi8\HangHoa.cs" />
+    <Compile Include="Objects\Buoi9\Product.cs" />
+    <Compile Include="Objects\Buoi9\Product2.cs" />
     <Compile Include="Objects\ReturnData.cs" />
-    <Compile Include="Objects\Student.cs" />
+    <Compile Include="Objects\Buoi9\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

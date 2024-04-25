@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi4
+    internal class Buoi4
     {
         internal void Menu()
         {
             Console.Write("Chọn bài tập: ");
-            int luaChon = Nhap.SoNguyen(false, 0, 3);
+            int luaChon = Input.Integer(false, 0, 3);
 
             switch (luaChon)
             {
@@ -59,7 +59,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -85,11 +85,11 @@ namespace CSharpCoBan
                 var Sach = new Sach();
                 Console.WriteLine("\nNhap vao cac thong tin cua sach");
                 Console.Write("Tieu de: ");
-                Sach.TieuDe = Nhap.Ten();
+                Sach.TieuDe = Input.Name();
                 Console.Write("Tac Gia: ");
-                Sach.TacGia = Nhap.Ten();
+                Sach.TacGia = Input.Name();
                 Console.Write("Nam xuat ban: ");
-                Sach.Nam = Nhap.SoNguyen(false, 0, DateTime.Now.Year);
+                Sach.Nam = Input.Integer(false, 0, DateTime.Now.Year);
 
                 TuSach.Add(Sach);
                 Console.WriteLine($"Đã thêm {Sach.TieuDe} vào tủ sách!");
@@ -146,7 +146,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -174,9 +174,9 @@ namespace CSharpCoBan
                 Console.Write("Họ tên: ");
                 HS.HoTen = Console.ReadLine();
                 Console.Write("Tuổi: ");
-                HS.Tuoi = Nhap.SoNguyen(false, 0, 122);
+                HS.Tuoi = Input.Integer(false, 0, 122);
                 Console.Write("Điểm trung bình: ");
-                HS.DiemTB = Nhap.SoThuc();
+                HS.DiemTB = Input.Float();
 
                 DSHocSinh.Add(HS);
                 Console.WriteLine($"Đã thêm {HS.HoTen} vào danh sách!");
@@ -259,7 +259,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 4);
+                    luaChon = Input.Integer(false, 0, 4);
 
                     switch (luaChon)
                     {
@@ -285,7 +285,7 @@ namespace CSharpCoBan
             internal static HoaDon[] NhapHoaDon()
             {
                 Console.Write("Nhập số lượng hoá đơn: ");
-                int n = Nhap.SoNguyen();
+                int n = Input.Integer();
                 HoaDon[] dsHoaDon = new HoaDon[n];
 
                 for (int i = 0; i < n; i++)
@@ -294,14 +294,14 @@ namespace CSharpCoBan
                     Console.Write("Mã hoá đơn: ");
                     dsHoaDon[i].MaHoaDon = Console.ReadLine();
                     Console.Write("Ngày phát hành: ");
-                    dsHoaDon[i].NgayPhatHanh = Nhap.NgayThang();
+                    dsHoaDon[i].NgayPhatHanh = Input.Date();
                     Console.Write("Tổng tiền: ");
-                    dsHoaDon[i].TongTien = Nhap.SoNguyen(false);
+                    dsHoaDon[i].TongTien = Input.Integer(false);
                     Console.Write("Số tiền nợ: ");
-                    dsHoaDon[i].SoTienNo = Nhap.SoNguyen(false);
+                    dsHoaDon[i].SoTienNo = Input.Integer(false);
                     dsHoaDon[i].TrangThaiNo = dsHoaDon[i].SoTienNo == 0 ? 0 : 1;
                     Console.Write("Tên khách hàng: ");
-                    dsHoaDon[i].TenKhachHang = Nhap.Ten();
+                    dsHoaDon[i].TenKhachHang = Input.Name();
                 }
 
                 return dsHoaDon;

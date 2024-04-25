@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Globalization;
 
-namespace CSharpCoBan
+namespace CSharpCoBan.BTVN
 {
-    internal class BTVN_Buoi5
+    internal class Buoi5
     {
         internal void Menu()
         {
             Console.Write("Chọn bài tập: ");
-            int luaChon = Nhap.SoNguyen(false, 0, 2);
+            int luaChon = Input.Integer(false, 0, 2);
 
             switch (luaChon)
             {
@@ -55,7 +55,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 4);
+                    luaChon = Input.Integer(false, 0, 4);
 
                     switch (luaChon)
                     {
@@ -115,7 +115,7 @@ namespace CSharpCoBan
             internal static NhanVien[] NhapDanhSach()
             {
                 Console.Write("Nhập số lượng nhân viên: ");
-                int n = Nhap.SoNguyen();
+                int n = Input.Integer();
                 var dsNhanVien = new NhanVien[n];
 
                 for (int i = 0; i < n; i++)
@@ -124,13 +124,13 @@ namespace CSharpCoBan
                     Console.Write("Mã nhân viên: ");
                     dsNhanVien[i].MaNV = Console.ReadLine();
                     Console.Write("Họ đệm: ");
-                    dsNhanVien[i].HoDem = Nhap.Ten();
+                    dsNhanVien[i].HoDem = Input.Name();
                     Console.Write("Tên: ");
-                    dsNhanVien[i].Ten = Nhap.Ten();
+                    dsNhanVien[i].Ten = Input.Name();
                     Console.Write("Ngày sinh: ");
-                    dsNhanVien[i].NgaySinh = Nhap.NgayThang();
+                    dsNhanVien[i].NgaySinh = Input.Date();
                     Console.Write("Ngày vào làm: ");
-                    dsNhanVien[i].NgayVaoLam = Nhap.NgayThang();
+                    dsNhanVien[i].NgayVaoLam = Input.Date();
                 }
 
                 return dsNhanVien;
@@ -200,7 +200,7 @@ namespace CSharpCoBan
 
                         Lựa chọn: ");
 
-                    luaChon = Nhap.SoNguyen(false, 0, 3);
+                    luaChon = Input.Integer(false, 0, 3);
 
                     switch (luaChon)
                     {
@@ -241,18 +241,18 @@ namespace CSharpCoBan
             internal static Product[] NhapDanhSach()
             {
                 Console.Write("Nhập vào số lượng sản phẩm bạn muốn nhập: ");
-                int n = Nhap.SoNguyen(false);
+                int n = Input.Integer(false);
                 Product[] products = new Product[n];
 
                 for (int i = 0; i < n; i++)
                 {
                     Console.WriteLine("Nhập vào thông tin sản phẩm thứ " + (i + 1));
                     Console.Write("Tên sản phẩm: ");
-                    products[i].Name = Nhap.Ten();
+                    products[i].Name = Input.Name();
                     Console.Write("Giá tiền: ");
-                    products[i].Price = Nhap.SoThuc(false);
+                    products[i].Price = Input.Float(false);
                     Console.Write("Ngày hết hạn: ");
-                    products[i].ExpiredDate = Nhap.NgayThang();
+                    products[i].ExpiredDate = Input.Date();
                 }
 
                 return products;
