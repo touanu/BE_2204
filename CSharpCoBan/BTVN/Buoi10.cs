@@ -31,9 +31,8 @@ namespace CSharpCoBan.BTVN
                         | 7.  Sửa thông tin đặt phòng
                          -----------------------------------------
                         | 8.  Đặt phòng và thanh toán
-                        | 9.  Xác nhận đặt phòng
-                        | 10. Huỷ đặt phòng
-                        | 11. Xem lịch sử đặt phòng
+                        | 9.  Huỷ đặt phòng
+                        | 10. Xem lịch sử đặt phòng
                         | 0.  Thoát chương trình
                          -----------------------------------------
 
@@ -60,7 +59,7 @@ namespace CSharpCoBan.BTVN
                     UpdateOrder();
                     return true;
                 case "7":
-
+                    BookARoom();
                     return true;
                 case "8":
 
@@ -220,11 +219,28 @@ namespace CSharpCoBan.BTVN
             Console.Write("Lựa chọn: ");
             int roomType = Input.Integer(false, 1, 3);
             bookingOrder.RoomId = roomManagement.GetAvaiableRoomId(roomType);
-            
+            bookingOrder.Price = roomManagement.GetPerNightPrice(roomType);
+
+            ReturnData changeStatusResult = roomManagement.ChangeRentedStatus(bookingOrder.RoomId);
+            if (changeStatusResult.ErrorCode == (int)ErrorCode.NotAvailable)
+            {
+                Console.WriteLine(changeStatusResult.Message);
+                return;
+            }
+
             ReturnData result = bookingManagement.Add(bookingOrder, ref roomManagement);
             Console.WriteLine(result.Message);
+        }
 
+        private void CancelABooking()
+        {
 
+        }
+
+        private void ShowOrderHistory()
+        {
+            Console.Write("Nhập vào số lượng bạn muốn hiện thị: ");
+            
         }
     }
 }

@@ -94,5 +94,29 @@ namespace BE2024.DataAccess.Implementations.Buoi10
         {
             return rooms.FindIndex(item => item.Type == typeOfRoom && item.IsRented == false);
         }
+
+        public double GetPerNightPrice(int roomId)
+        {
+            Room room = rooms.Find(item => item.RoomId == roomId);
+            return room.Price;
+        }
+
+        public ReturnData ChangeRentedStatus(int roomId)
+        {
+            Room room = rooms.Find(item => item.RoomId == roomId);
+
+            if (room.IsRented == true)
+            {
+                ReturnData returnData = new ReturnData
+                {
+                    ErrorCode = (int)ErrorCode.NotAvailable,
+                    Message = "Phòng này đã được thuê rồi!"
+                };
+                return returnData;
+            }
+
+            room.IsRented = true;
+            return UpdateRoom(room);
+        }
     }
 }
