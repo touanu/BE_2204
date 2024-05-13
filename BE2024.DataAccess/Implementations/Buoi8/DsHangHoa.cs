@@ -1,10 +1,6 @@
 ﻿using BE2024.DataAccess.Objects;
 using CommonLibs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BE2024.DataAccess.Implementations
 {

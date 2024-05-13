@@ -1,5 +1,5 @@
 ﻿using BE2024.DataAccess.Implementations.Buoi10;
-using BE2024.DataAccess.Objects;
+using CommonLibs;
 using BE2024.DataAccess.Objects.Buoi10;
 
 namespace BE2024.DataAccess.Layers.Buoi10

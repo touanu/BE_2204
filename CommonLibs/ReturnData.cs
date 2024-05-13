@@ -1,4 +1,4 @@
-﻿namespace BE2024.DataAccess.Objects
+﻿namespace CommonLibs
 {
     public class ReturnData
     {
@@ -9,10 +9,12 @@
     public enum ErrorCode
     {
         Success = 0,
-        EqualNull = -1,
-        Invalid = -2,
-        NotExist = -3,
-        AlreadyExist = -4,
-        NotAvailable = -5
+        Failure = -1,
+        Exception = -99,
+        EqualNull = -2,
+        Invalid = -3,
+        NotExist = -4,
+        AlreadyExist = -5,
+        NotAvailable = -6,
     }
 }

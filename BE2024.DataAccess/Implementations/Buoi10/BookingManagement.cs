@@ -1,7 +1,6 @@
 ﻿using BE2024.DataAccess.Layers.Buoi10;
-using BE2024.DataAccess.Objects;
-using BE2024.DataAccess.Objects.Buoi10;
 using CommonLibs;
+using BE2024.DataAccess.Objects.Buoi10;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +8,7 @@ namespace BE2024.DataAccess.Implementations.Buoi10
 {
     public class BookingManagement : IBookingManagement
     {
-        private List<BookingOrder> orders = new List<BookingOrder>();
+        private readonly List<BookingOrder> orders = new List<BookingOrder>();
 
         public ReturnData Add(BookingOrder order, ref RoomManagement roomManager)
         {

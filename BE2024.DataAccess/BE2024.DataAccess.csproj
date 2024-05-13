@@ -60,7 +60,6 @@
     <Compile Include="Objects\Buoi8\HangHoa.cs" />
     <Compile Include="Objects\Buoi9\Product.cs" />
     <Compile Include="Objects\Buoi9\Product2.cs" />
-    <Compile Include="Objects\ReturnData.cs" />
     <Compile Include="Objects\Buoi9\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
