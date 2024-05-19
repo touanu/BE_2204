@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.DataAccess", "Libra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.DataAccess", "Storage.DataAccess\Storage.DataAccess.csproj", "{81AC0DDA-7483-4761-BCEB-66FC7178F871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageManagerConsole", "StorageManagerConsole\StorageManagerConsole.csproj", "{C36777B5-0769-4535-8FA5-C8645D53528E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageManagerConsole", "StorageManagerConsole\StorageManagerConsole.csproj", "{C36777B5-0769-4535-8FA5-C8645D53528E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookManager", "BookManager\BookManager.csproj", "{538ADE0E-0387-4AD7-B683-7034C39DD43E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C36777B5-0769-4535-8FA5-C8645D53528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36777B5-0769-4535-8FA5-C8645D53528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36777B5-0769-4535-8FA5-C8645D53528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿using BE2024.DataAccess.Implementations.Buoi10;
-using BE2024.DataAccess.Objects;
 using BE2024.DataAccess.Objects.Buoi10;
+using CommonLibs;
 using System;
 
 namespace CSharpCoBan.BTVN
@@ -8,7 +8,7 @@ namespace CSharpCoBan.BTVN
     internal class Buoi10
     {
         private RoomManagement roomManagement = new RoomManagement();
-        private BookingManagement bookingManagement = new BookingManagement();
+        private readonly BookingManagement bookingManagement = new BookingManagement();
         internal void BaiTap()
         {
             bool showMenu;
@@ -232,15 +232,5 @@ namespace CSharpCoBan.BTVN
             Console.WriteLine(result.Message);
         }
 
-        private void CancelABooking()
-        {
-
-        }
-
-        private void ShowOrderHistory()
-        {
-            Console.Write("Nhập vào số lượng bạn muốn hiện thị: ");
-            
-        }
     }
 }

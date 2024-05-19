@@ -15,28 +15,28 @@ namespace Library.DataAccess.Services
 
         public async Task<int> Delete(int id)
         {
-            Book? book = _libraryDBContext.books.Find(id);
+            Book? book = _libraryDBContext.Books.Find(id);
             if (book == null)
                 return -1;
 
-            _libraryDBContext.books.Remove(book);
+            _libraryDBContext.Books.Remove(book);
             return _libraryDBContext.SaveChanges();
         }
 
         public async Task<List<Book>> GetAll()
         {
-            return [.. _libraryDBContext.books];
+            return [.. _libraryDBContext.Books];
         }
 
         public async Task<int> Insert(Book book)
         {
-            _libraryDBContext.books.Add(book);
+            _libraryDBContext.Books.Add(book);
             return _libraryDBContext.SaveChanges();
         }
 
         public async Task<Book> Search(int id)
         {
-            return _libraryDBContext.books.Find(id);
+            return _libraryDBContext.Books.Find(id);
         }
 
         public Task<int> Update(Book book)

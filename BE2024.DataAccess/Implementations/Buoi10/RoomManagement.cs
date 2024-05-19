@@ -1,5 +1,5 @@
 ﻿using BE2024.DataAccess.Layers.Buoi10;
-using BE2024.DataAccess.Objects;
+using CommonLibs;
 using BE2024.DataAccess.Objects.Buoi10;
 using System.Collections.Generic;
 
@@ -7,7 +7,7 @@ namespace BE2024.DataAccess.Implementations.Buoi10
 {
     public class RoomManagement : IRoomManagement
     {
-        private List<Room> rooms = new List<Room>();
+        private readonly List<Room> rooms = new List<Room>();
 
         public ReturnData AddRoom(Room room)
         {

@@ -71,7 +71,6 @@
     <Compile Include="BTVN\Buoi6.cs" />
     <Compile Include="BTVN\Buoi8.cs" />
     <Compile Include="BTVN\Buoi9.cs" />
-    <Compile Include="Input.cs" />
     <Compile Include="ThucHanh\Buoi2.cs" />
     <Compile Include="ThucHanh\Buoi3.cs" />
     <Compile Include="ThucHanh\Buoi5.cs" />
@@ -98,6 +97,10 @@
     <ProjectReference Include="..\BE2024.DataAccess\BE2024.DataAccess.csproj">
       <Project>{ce1548e1-f402-4b23-81d0-67a095815e41}</Project>
       <Name>BE2024.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLibs\CommonLibs.csproj">
+      <Project>{25d5dc73-aa26-40e6-88c6-9e499a51623a}</Project>
+      <Name>CommonLibs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

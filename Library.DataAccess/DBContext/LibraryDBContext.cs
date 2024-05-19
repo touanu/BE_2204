@@ -8,17 +8,13 @@ using System.Threading.Tasks;
 
 namespace Library.DataAccess.DBContext
 {
-    public class LibraryDBContext : DbContext
+    public class LibraryDBContext(DbContextOptions options) : DbContext(options)
     {
-        public LibraryDBContext(DbContextOptions options) : base(options)
-        {
-
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }
 
-        public virtual DbSet<Book> books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
     }
 }

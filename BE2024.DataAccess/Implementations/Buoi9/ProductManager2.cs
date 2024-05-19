@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BE2024.DataAccess.Objects;
+using CommonLibs;
 
 namespace BE2024.DataAccess.Implementations
 {
