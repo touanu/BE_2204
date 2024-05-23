@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Add a new book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form>
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="bookName">Tên sách</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="bookName">
+        </div>
+    </div>
+</form>

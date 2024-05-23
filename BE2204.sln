@@ -17,6 +17,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageManagerConsole", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookManager", "BookManager\BookManager.csproj", "{538ADE0E-0387-4AD7-B683-7034C39DD43E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookManager.NETCore", "BookManager.NETCore\BookManager.NETCore.csproj", "{E2618DC7-EE5F-4B4F-8C56-4CC73A2B67C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManager.WebApp", "StudentManager.WebApp\StudentManager.WebApp.csproj", "{FF9BE63C-9347-49D9-A947-B0805556A217}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManager.DataAccess", "StudentManager.DataAccess\StudentManager.DataAccess.csproj", "{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDB", "EmployeesDB\EmployeesDB.csproj", "{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDB.DataAccess", "EmployeesDB.DataAccess\EmployeesDB.DataAccess.csproj", "{107878A3-6E57-42B0-A268-48727C020EF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +61,26 @@ Global
 		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{538ADE0E-0387-4AD7-B683-7034C39DD43E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2618DC7-EE5F-4B4F-8C56-4CC73A2B67C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2618DC7-EE5F-4B4F-8C56-4CC73A2B67C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2618DC7-EE5F-4B4F-8C56-4CC73A2B67C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2618DC7-EE5F-4B4F-8C56-4CC73A2B67C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9BE63C-9347-49D9-A947-B0805556A217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9BE63C-9347-49D9-A947-B0805556A217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9BE63C-9347-49D9-A947-B0805556A217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9BE63C-9347-49D9-A947-B0805556A217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107878A3-6E57-42B0-A268-48727C020EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107878A3-6E57-42B0-A268-48727C020EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107878A3-6E57-42B0-A268-48727C020EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107878A3-6E57-42B0-A268-48727C020EF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
