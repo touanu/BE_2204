@@ -12,7 +12,8 @@ namespace EmployeesDB.DataAccess.IServices
         Task<EmployeerSaveReturnData> Create(Employeer employeer);
         Task<EmployeerSaveReturnData> Update(Employeer employeer);
         Task<EmployeerSaveReturnData> Delete(int employeerID);
-        Task<Employeer> GetEmployeerbyName(string employeerName);
-        Task<Employeer> GetEmployeerbyProcessID(int processID);
+        Task<List<Employeer?>> GetEmployeerByName(string employeerName);
+        Task<Employeer?> GetEmployeerByProcessID(int processID);
+        Task<Employeer?> GetEmployeerByID(int employeerID);
     }
 }

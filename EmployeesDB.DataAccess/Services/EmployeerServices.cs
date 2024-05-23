@@ -3,6 +3,7 @@ using EmployeesDB.DataAccess.DBContext;
 using EmployeesDB.DataAccess.IServices;
 using EmployeesDB.DataAccess.Objects;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace EmployeesDB.DataAccess.Services
 {
@@ -99,14 +100,24 @@ namespace EmployeesDB.DataAccess.Services
             }
         }
 
-        public async Task<List<Employeer>> GetEmployeerbyName(string employeerName)
+        public Task<Employeer?> GetEmployeerByID(int employeerID)
         {
-            return employeesDBContext.Employeers.AllAsync();
+            return employeesDBContext.Employeers
+                .Where(item => item.EmployeerId == employeerID)
+                .FirstOrDefaultAsync();
         }
 
-        public Task<Employeer> GetEmployeerbyProcessID(int processID)
+        public async Task<List<Employeer?>> GetEmployeerByName(string employeerName)
         {
-            throw new NotImplementedException();
+            return [.. employeesDBContext.Employeers
+                .Where(item => item.FullName == employeerName)];
+        }
+
+        public Task<Employeer?> GetEmployeerByProcessID(int processID)
+        {
+            return employeesDBContext.Employeers
+                .Where(item => item.ProcessID == processID)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<EmployeerSaveReturnData> Update(Employeer employeer)
