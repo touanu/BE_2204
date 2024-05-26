@@ -16,5 +16,6 @@
         NotExist = -4,
         AlreadyExist = -5,
         NotAvailable = -6,
+        MinimumRequired = -7,
     }
 }

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\ProductManagement.DataAccess\ProductManagement.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\products\" />
+  </ItemGroup>
+
 </Project>

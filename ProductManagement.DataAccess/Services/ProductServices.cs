@@ -15,14 +15,12 @@ namespace ProductManagement.DataAccess.Services
             try
             {
                 // Kiểm tra dữ liệu nhập vào
-                bool isVariantInvalid = false;
-                if (product.Variants != null)
-                {
-                    isVariantInvalid = product.Variants.Exists(item => item.VariantID < 0)
-                            || product.Variants.Exists(item => item.VariantType < 0)
-                            || product.Variants.Exists(item => Validation.IsContainHTMLTags(item.VariantDescription))
-                            || product.Variants.Exists(item => item.ProductID == product.Product.ProductID);
-                }
+                bool isVariantInvalid = product.Variants == null
+                        || product.Variants.Exists(item => item.VariantID < 0)
+                        || product.Variants.Exists(item => item.VariantType < 0)
+                        || product.Variants.Exists(item => Validation.IsContainHTMLTags(item.VariantDescription))
+                        || product.Variants.Exists(item => item.ProductID == product.Product.ProductID);
+
                 if (product == null
                     || isVariantInvalid
                     || Validation.IsName(product.Product.ProductName)
@@ -103,7 +101,7 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                // Chỉ xoá một biến thể
+                // Chỉ xoá một biến thể của sản phẩm
                 var currentVariant = productDBContext.ProductVariants
                     .Where(s => s.VariantID == product.VariantId).FirstOrDefault();
 
@@ -129,7 +127,29 @@ namespace ProductManagement.DataAccess.Services
             }
         }
 
-        public List<Product> GetProducts() => [.. productDBContext.Products];
+        public List<GetProductReturnData> GetProducts()
+        {
+            var returnData = new List<GetProductReturnData>();
+
+            if (!productDBContext.Products.Any())
+                return returnData;
+
+            /* Khi trả về dữ liệu, Variants cần phải khớp với Product
+             * bằng cách so sánh ProductID
+             */
+            foreach (var item in productDBContext.Products.ToList())
+            {
+                var variants = productDBContext.ProductVariants
+                    .Where(s => s.ProductID == item.ProductID)
+                    .ToList();
+                
+                returnData.Add(
+                    new GetProductReturnData(item, variants)
+                );
+            }
+
+            return returnData;
+        }
 
         public async Task<SaveChangesReturnData> Update(ProductUpdateRequest product)
         {
@@ -169,6 +189,17 @@ namespace ProductManagement.DataAccess.Services
 
                 // Cập nhật cơ sở dữ liệu
                 productDBContext.Products.Update(product.Product);
+
+                //      Một sản phẩm phải có ít nhất 1 biến thể
+                var productVariants = productDBContext.ProductVariants
+                    .Where(s => s.ProductID == product.Product.ProductID);
+                if (productVariants.Count() <= 1)
+                {
+                    returnData.ErrorCode = (int)ErrorCode.MinimumRequired;
+                    returnData.Message = "Cần phải có ít nhất 1 biến thể cho sản phẩm";
+                    return returnData;
+                }
+
                 if (product.Variants != null)
                     foreach (var item in product.Variants)
                     {

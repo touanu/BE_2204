@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ProductManagement.DataAccess.DBContext;
-using ProductManagement.DataAccess.Objects;
 using ProductManagement.DataAccess.Services;
 using ProductManagement.Models;
 using System.Diagnostics;
@@ -16,10 +14,13 @@ namespace ProductManagement.Controllers
         public IActionResult Index()
         {
             var models = new List<ProductModel>();
+            var products = _productServices.GetProducts();
 
-            foreach (var item in _productServices.GetProducts())
+            foreach (var item in products)
             {
-                
+                models.Add(
+                    new ProductModel(item.Product, item.Variants)
+                );
             }
 
             return View(models);

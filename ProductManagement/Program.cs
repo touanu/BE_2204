@@ -3,8 +3,11 @@ using ProductManagement.DataAccess.DBContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
+/*
 builder.Services.AddDbContext<ProductDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB") ?? throw new InvalidOperationException("Connection string not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB") 
+                        ?? throw new InvalidOperationException("Connection string not found.")));
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

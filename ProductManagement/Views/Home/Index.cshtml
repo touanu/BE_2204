@@ -3,16 +3,21 @@
 }
 @model List<ProductManagement.Models.ProductModel>
 
-<div class="container text-center">
-@if (Model != null && Model.Count > 0)
-{
-    foreach (var item in Model)
+<div class="container">
+    @if (Model != null && Model.Count > 0)
     {
-        <div class="row">
-
-
-
-        </div>
+        foreach (var item in Model)
+        {
+            <div class="row">
+                <p>@item.Product.ProductName</p>
+                @foreach (var s in item.Variants)
+                {
+                    <div class="col gx-5 img-thumbnail text-center">
+                        <img src='@s.ImagePath' alt='@s.VariantDescription' />
+                        <p>@s.VariantDescription</p>
+                    </div>
+                }
+            </div>
+        }
     }
-}
 </div>

@@ -2,9 +2,9 @@
 
 namespace ProductManagement.Models
 {
-    public class ProductModel
+    public class ProductModel(Product product, List<ProductVariant>? variants)
     {
-        public Product? Product { get; set; }
-        public ProductVariant? Variant { get; set; }
+        public Product? Product { get; set; } = product;
+        public List<ProductVariant>? Variants { get; set; } = variants;
     }
 }
