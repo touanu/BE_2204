@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using ProductManagement.DataAccess.DBContext;
+
 var builder = WebApplication.CreateBuilder(args);
-// builder.Services.AddDbContext<BookManagerNETCoreContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("BookManagerNETCoreContext") ?? throw new InvalidOperationException("Connection string 'BookManagerNETCoreContext' not found.")));
+
+builder.Services.AddDbContext<ProductDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB") ?? throw new InvalidOperationException("Connection string not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +24,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Books}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -23,9 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManager.WebApp", "St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManager.DataAccess", "StudentManager.DataAccess\StudentManager.DataAccess.csproj", "{F697B49A-4F34-4C86-B5FE-AC1E9FB88123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDB", "EmployeesDB\EmployeesDB.csproj", "{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDB", "EmployeesDB\EmployeesDB.csproj", "{7F473CF9-4B24-4A04-B5A5-EF6126DED75D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDB.DataAccess", "EmployeesDB.DataAccess\EmployeesDB.DataAccess.csproj", "{107878A3-6E57-42B0-A268-48727C020EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDB.DataAccess", "EmployeesDB.DataAccess\EmployeesDB.DataAccess.csproj", "{107878A3-6E57-42B0-A268-48727C020EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{94998DEE-55D1-43A1-A957-629093EBBCC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement.DataAccess", "ProductManagement.DataAccess\ProductManagement.DataAccess.csproj", "{979A78B4-CF0D-4849-8628-9237F9755593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{107878A3-6E57-42B0-A268-48727C020EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{107878A3-6E57-42B0-A268-48727C020EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{107878A3-6E57-42B0-A268-48727C020EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94998DEE-55D1-43A1-A957-629093EBBCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94998DEE-55D1-43A1-A957-629093EBBCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94998DEE-55D1-43A1-A957-629093EBBCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94998DEE-55D1-43A1-A957-629093EBBCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979A78B4-CF0D-4849-8628-9237F9755593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979A78B4-CF0D-4849-8628-9237F9755593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979A78B4-CF0D-4849-8628-9237F9755593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979A78B4-CF0D-4849-8628-9237F9755593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
