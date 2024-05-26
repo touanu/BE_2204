@@ -15,7 +15,16 @@ namespace ProductManagement.DataAccess.Services
             try
             {
                 // Kiểm tra dữ liệu nhập vào
+                bool isVariantInvalid = false;
+                if (product.Variants != null)
+                {
+                    isVariantInvalid = product.Variants.Exists(item => item.VariantID < 0)
+                            || product.Variants.Exists(item => item.VariantType < 0)
+                            || product.Variants.Exists(item => Validation.IsContainHTMLTags(item.VariantDescription))
+                            || product.Variants.Exists(item => item.ProductID == product.Product.ProductID);
+                }
                 if (product == null
+                    || isVariantInvalid
                     || Validation.IsName(product.Product.ProductName)
                     )
                 {
@@ -31,12 +40,15 @@ namespace ProductManagement.DataAccess.Services
                 if (currentProduct != null)
                 {
                     returnData.ErrorCode = (int)ErrorCode.AlreadyExist;
-                    returnData.Message = "Nhân viên này đã tồn tại trên hệ thống";
+                    returnData.Message = "Sản phẩm này đã tồn tại trên hệ thống";
                     return returnData;
                 }
 
-                // Thêm nhân viên
+                // Thêm sản phẩm
                 productDBContext.Products.Add(product.Product);
+                foreach (var item in product.Variants)
+                    productDBContext.ProductVariants.Add(item);
+
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
@@ -124,8 +136,17 @@ namespace ProductManagement.DataAccess.Services
             try
             {
                 // Kiểm tra dữ liệu nhập vào
+                bool isVariantInvalid = false;
+                if (product.Variants != null)
+                {
+                    isVariantInvalid = product.Variants.Exists(item => item.VariantID < 0)
+                            || product.Variants.Exists(item => item.VariantType < 0)
+                            || product.Variants.Exists(item => Validation.IsContainHTMLTags(item.VariantDescription))
+                            || product.Variants.Exists(item => item.ProductID == product.Product.ProductID);
+                }
                 if (product == null
-                    || Validation.IsName(product.ProductName)
+                    || isVariantInvalid
+                    || Validation.IsName(product.Product.ProductName)
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -133,7 +154,21 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                productDBContext.Products.Update(product);
+                // Kiểm tra trùng
+                var currentProduct = productDBContext.Products.ToList()
+                    .Where(s => s.ProductName == product.Product.ProductName).FirstOrDefault();
+
+                if (currentProduct == null)
+                {
+                    returnData.ErrorCode = (int)ErrorCode.NotExist;
+                    returnData.Message = "Sản phẩm này không tồn tại trên hệ thống";
+                    return returnData;
+                }
+
+                productDBContext.Products.Update(product.Product);
+                foreach (var item in product.Variants)
+                    productDBContext.ProductVariants.Update(item);
+
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
