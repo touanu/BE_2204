@@ -5,18 +5,19 @@ using ProductManagement.DataAccess.Objects;
 
 namespace ProductManagement.DataAccess.Services
 {
-    public class ProductServices : IProductServices
+    public class CategoryServices : ICategoryServices
     {
         private readonly ProductDBContext productDBContext = new();
-        public async Task<SaveChangesReturnData> Add(ProductAddRequest product)
+
+        public async Task<SaveChangesReturnData> Add(Category category)
         {
             var returnData = new SaveChangesReturnData();
 
             try
             {
                 // Kiểm tra dữ liệu nhập vào
-                if (product == null
-                    || Validation.IsName(product.Product.ProductName)
+                if (category == null
+                    || Validation.IsName(category.CategoryName)
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -25,8 +26,8 @@ namespace ProductManagement.DataAccess.Services
                 }
 
                 // Kiểm tra trùng
-                var currentProduct = productDBContext.Products.ToList()
-                    .Where(s => s.ProductName == product.Product.ProductName).FirstOrDefault();
+                var currentProduct = productDBContext.Categories.ToList()
+                    .Where(s => s.CategoryName == category.CategoryName).FirstOrDefault();
 
                 if (currentProduct != null)
                 {
@@ -36,7 +37,7 @@ namespace ProductManagement.DataAccess.Services
                 }
 
                 // Thêm nhân viên
-                productDBContext.Products.Add(product.Product);
+                productDBContext.Categories.Add(category);
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
@@ -51,16 +52,15 @@ namespace ProductManagement.DataAccess.Services
             }
         }
 
-        public async Task<SaveChangesReturnData> Delete(ProductDeleteRequest product)
+        public async Task<SaveChangesReturnData> Delete(Category category)
         {
             var returnData = new SaveChangesReturnData();
 
             try
             {
                 // Kiểm tra dữ liệu nhập vào
-                if (product.ProductId < 0
-                    || product.VariantId < 0
-                    || product == null
+                if (category.CategoryId < 0
+                    || category == null
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -68,42 +68,24 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                // Tìm kiếm sản phẩm theo ID
-                var currentProduct = productDBContext.Products
-                    .Where(s => s.ProductID == product.ProductId).FirstOrDefault();
+                /* Tìm kiếm nhân viên theo ID
+                var category = productDBContext.Categories
+                    .Where(s => s.CategoryID == category.CategoryID).FirstOrDefault();
 
-                if (currentProduct == null)
+                if (category == null)
                 {
                     returnData.ErrorCode = (int)ErrorCode.NotExist;
-                    returnData.Message = "Không tồn tại sản phẩm này";
+                    returnData.Message = "Không tồn tại nhân viên này";
                     return returnData;
                 }
+                */
 
-                // Xoá cả sản phẩm
-                if (product.VariantId == null)
-                {
-                    productDBContext.Products.Remove(currentProduct);
-                    returnData.ErrorCode = (int)ErrorCode.Success;
-                    returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
-                    returnData.Message = "Xoá thành công!";
-                    return returnData;
-                }
-
-                // Chỉ xoá một biến thể
-                var currentVariant = productDBContext.ProductVariants
-                    .Where(s => s.VariantID == product.VariantId).FirstOrDefault();
-
-                if (currentVariant == null)
-                {
-                    returnData.ErrorCode = (int)ErrorCode.NotExist;
-                    returnData.Message = "Không tồn tại biến thể này của sản phẩm";
-                    return returnData;
-                }
-
-                productDBContext.ProductVariants.Remove(currentVariant);
+                // Xoá nhân viên
+                productDBContext.Categories.Remove(category);
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
-                returnData.Message = "Xoá thành công";
+                returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
+
                 return returnData;
             }
             catch (Exception ex)
@@ -115,17 +97,20 @@ namespace ProductManagement.DataAccess.Services
             }
         }
 
-        public List<Product> GetProducts() => [.. productDBContext.Products];
+        public List<Category> GetAll()
+        {
+            return [.. productDBContext.Categories];
+        }
 
-        public async Task<SaveChangesReturnData> Update(ProductUpdateRequest product)
+        public async Task<SaveChangesReturnData> Update(Category category)
         {
             var returnData = new SaveChangesReturnData();
 
             try
             {
                 // Kiểm tra dữ liệu nhập vào
-                if (product == null
-                    || Validation.IsName(product.ProductName)
+                if (category == null
+                    || Validation.IsName(category.CategoryName)
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -133,7 +118,7 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                productDBContext.Products.Update(product);
+                productDBContext.Categories.Update(category);
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";

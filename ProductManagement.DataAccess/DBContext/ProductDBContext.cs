@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProductManagement.DataAccess.DBContext
 {
-    public class ProductDBContext(DbContextOptions options) : DbContext(options)
+    public class ProductDBContext : DbContext
     {
         /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -11,16 +11,6 @@ namespace ProductManagement.DataAccess.DBContext
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-DBAC4GV\\SQLEXPRESS;Initial Catalog=ProductDB;Integrated Security=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;TrustServerCertificate=True");
         }
         */
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
 
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

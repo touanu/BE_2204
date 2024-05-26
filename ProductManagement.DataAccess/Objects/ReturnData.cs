@@ -2,7 +2,7 @@
 
 namespace ProductManagement.DataAccess.Objects
 {
-    public class ProductSaveReturnData : ReturnData
+    public class SaveChangesReturnData : ReturnData
     {
         public int SaveChangesCode { get; set; }
     }

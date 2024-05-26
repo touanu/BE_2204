@@ -1,3 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<ProductManagement.Models.ProductModel>
+
+<div class="container text-center">
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="row">
+
+
+
+        </div>
+    }
+}
+</div>
