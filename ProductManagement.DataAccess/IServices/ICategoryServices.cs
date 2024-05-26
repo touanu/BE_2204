@@ -5,8 +5,8 @@ namespace ProductManagement.DataAccess.IServices
     public interface ICategoryServices
     {
         List<Category> GetAll();
-        Task<SaveChangesReturnData> Add(Category category);
-        Task<SaveChangesReturnData> Update(Category category);
-        Task<SaveChangesReturnData> Delete(Category category);
+        Task<SaveChangesReturnData> Add(CategoryAddRequest category);
+        Task<SaveChangesReturnData> Update(CategoryUpdateRequest category);
+        Task<SaveChangesReturnData> Delete(CategoryDeleteRequest category);
     }
 }

@@ -9,7 +9,7 @@ namespace ProductManagement.DataAccess.Services
     {
         private readonly ProductDBContext productDBContext = new();
 
-        public async Task<SaveChangesReturnData> Add(Category category)
+        public async Task<SaveChangesReturnData> Add(CategoryAddRequest category)
         {
             var returnData = new SaveChangesReturnData();
 
@@ -17,7 +17,7 @@ namespace ProductManagement.DataAccess.Services
             {
                 // Kiểm tra dữ liệu nhập vào
                 if (category == null
-                    || Validation.IsName(category.CategoryName)
+                    || Validation.IsName(category.Category.CategoryName)
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -27,7 +27,7 @@ namespace ProductManagement.DataAccess.Services
 
                 // Kiểm tra trùng
                 var currentProduct = productDBContext.Categories.ToList()
-                    .Where(s => s.CategoryName == category.CategoryName).FirstOrDefault();
+                    .Where(s => s.CategoryName == category.Category.CategoryName).FirstOrDefault();
 
                 if (currentProduct != null)
                 {
@@ -36,8 +36,8 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                // Thêm nhân viên
-                productDBContext.Categories.Add(category);
+                // Thêm danh mục
+                productDBContext.Categories.Add(category.Category);
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
@@ -52,7 +52,7 @@ namespace ProductManagement.DataAccess.Services
             }
         }
 
-        public async Task<SaveChangesReturnData> Delete(Category category)
+        public async Task<SaveChangesReturnData> Delete(CategoryDeleteRequest category)
         {
             var returnData = new SaveChangesReturnData();
 
@@ -60,6 +60,7 @@ namespace ProductManagement.DataAccess.Services
             {
                 // Kiểm tra dữ liệu nhập vào
                 if (category.CategoryId < 0
+                    || category.CDId < 0
                     || category == null
                     )
                 {
@@ -68,24 +69,45 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                /* Tìm kiếm nhân viên theo ID
-                var category = productDBContext.Categories
-                    .Where(s => s.CategoryID == category.CategoryID).FirstOrDefault();
+                // Tìm kiếm sản phẩm theo ID
+                var currentCategory = productDBContext.Categories
+                    .Where(s => s.CategoryId == category.CategoryId).FirstOrDefault();
 
-                if (category == null)
+                if (currentCategory == null)
                 {
                     returnData.ErrorCode = (int)ErrorCode.NotExist;
-                    returnData.Message = "Không tồn tại nhân viên này";
+                    returnData.Message = "Không tồn tại sản phẩm này";
                     return returnData;
                 }
-                */
 
-                // Xoá nhân viên
-                productDBContext.Categories.Remove(category);
+                // Xoá cả sản phẩm
+                if (category.CDId == null)
+                {
+                    productDBContext.Categories.Remove(currentCategory);
+                    returnData.ErrorCode = (int)ErrorCode.Success;
+                    returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
+                    returnData.Message = "Xoá thành công!";
+                    return returnData;
+                }
+
+                // Chỉ xoá một danh mục khỏi sản phẩm
+                var currentCategoryDetail = productDBContext.CategoryDetails
+                    .Where(
+                        s => s.CDID == category.CDId
+                        && s.CategoryID == category.CategoryId
+                    ).FirstOrDefault();
+
+                if (currentCategoryDetail == null)
+                {
+                    returnData.ErrorCode = (int)ErrorCode.NotExist;
+                    returnData.Message = "Sản phẩm không tồn tại danh mục này";
+                    return returnData;
+                }
+
+                productDBContext.CategoryDetails.Remove(currentCategoryDetail);
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
-                returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";
-
+                returnData.Message = "Xoá thành công";
                 return returnData;
             }
             catch (Exception ex)
@@ -102,15 +124,22 @@ namespace ProductManagement.DataAccess.Services
             return [.. productDBContext.Categories];
         }
 
-        public async Task<SaveChangesReturnData> Update(Category category)
+        public async Task<SaveChangesReturnData> Update(CategoryUpdateRequest category)
         {
             var returnData = new SaveChangesReturnData();
 
             try
             {
                 // Kiểm tra dữ liệu nhập vào
+                bool isCategoryInvalid = false;
+                if (category.Details != null)
+                {
+                    isCategoryInvalid = category.Details.Exists(item => item.CDID < 0)
+                            || category.Details.Exists(item => item.CategoryID == category.Category.CategoryId);
+                }
                 if (category == null
-                    || Validation.IsName(category.CategoryName)
+                    || isCategoryInvalid
+                    || Validation.IsName(category.Category.CategoryName)
                     )
                 {
                     returnData.ErrorCode = (int)ErrorCode.Invalid;
@@ -118,7 +147,35 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                productDBContext.Categories.Update(category);
+                // Kiểm tra tồn tại
+                var currentCategory = productDBContext.Categories
+                    .Where(s => 
+                        s.CategoryId == category.Category.CategoryId
+                        || s.CategoryName == category.Category.CategoryName
+                    ).FirstOrDefault();
+
+                if (currentCategory == null)
+                {
+                    returnData.ErrorCode = (int)ErrorCode.NotExist;
+                    returnData.Message = "Sản phẩm này không tồn tại trên hệ thống";
+                    return returnData;
+                }
+
+                productDBContext.Categories.Update(category.Category);
+
+                if (category.Details != null)
+                    foreach (var item in category.Details)
+                    {
+                        if (!productDBContext.CategoryDetails
+                            .Any(s => s.CDID == item.CDID))
+                        {
+                            productDBContext.CategoryDetails.Add(item);
+                            continue;
+                        }
+
+                        productDBContext.CategoryDetails.Update(item);
+                    }    
+                
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
                 returnData.Message = "Thêm vào cơ sở dữ liệu thành công!";

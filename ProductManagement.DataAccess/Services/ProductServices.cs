@@ -46,8 +46,10 @@ namespace ProductManagement.DataAccess.Services
 
                 // Thêm sản phẩm
                 productDBContext.Products.Add(product.Product);
-                foreach (var item in product.Variants)
-                    productDBContext.ProductVariants.Add(item);
+
+                if (product.Variants != null)
+                    foreach (var item in product.Variants)
+                        productDBContext.ProductVariants.Add(item);
 
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
@@ -154,7 +156,7 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
-                // Kiểm tra trùng
+                // Kiểm tra tồn tại
                 var currentProduct = productDBContext.Products.ToList()
                     .Where(s => s.ProductName == product.Product.ProductName).FirstOrDefault();
 
@@ -165,9 +167,20 @@ namespace ProductManagement.DataAccess.Services
                     return returnData;
                 }
 
+                // Cập nhật cơ sở dữ liệu
                 productDBContext.Products.Update(product.Product);
-                foreach (var item in product.Variants)
-                    productDBContext.ProductVariants.Update(item);
+                if (product.Variants != null)
+                    foreach (var item in product.Variants)
+                    {
+                        if (!productDBContext.ProductVariants
+                            .Any(s => s.VariantID == item.VariantID))
+                        {
+                            productDBContext.ProductVariants.Add(item);
+                            continue;
+                        }
+
+                        productDBContext.ProductVariants.Update(item);
+                    }
 
                 returnData.ErrorCode = (int)ErrorCode.Success;
                 returnData.SaveChangesCode = await productDBContext.SaveChangesAsync();
