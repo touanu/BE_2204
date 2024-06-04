@@ -13,22 +13,9 @@ namespace ProductManagement.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var models = new List<ProductModel>();
             var products = _productServices.GetProducts();
 
-            foreach (var item in products)
-            {
-                models.Add(
-                    new ProductModel(item.Product, item.Variants)
-                );
-            }
-
-            return View(models);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(products);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

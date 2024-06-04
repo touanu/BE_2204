@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDB", "EmployeesDB\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDB.DataAccess", "EmployeesDB.DataAccess\EmployeesDB.DataAccess.csproj", "{107878A3-6E57-42B0-A268-48727C020EF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{94998DEE-55D1-43A1-A957-629093EBBCC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{94998DEE-55D1-43A1-A957-629093EBBCC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement.DataAccess", "ProductManagement.DataAccess\ProductManagement.DataAccess.csproj", "{979A78B4-CF0D-4849-8628-9237F9755593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagement.DataAccess", "ProductManagement.DataAccess\ProductManagement.DataAccess.csproj", "{979A78B4-CF0D-4849-8628-9237F9755593}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWeb", "StudentWeb\StudentWeb.csproj", "{87A9BF4A-338E-42AF-B574-A06882262C55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{979A78B4-CF0D-4849-8628-9237F9755593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{979A78B4-CF0D-4849-8628-9237F9755593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{979A78B4-CF0D-4849-8628-9237F9755593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A9BF4A-338E-42AF-B574-A06882262C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A9BF4A-338E-42AF-B574-A06882262C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A9BF4A-338E-42AF-B574-A06882262C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A9BF4A-338E-42AF-B574-A06882262C55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

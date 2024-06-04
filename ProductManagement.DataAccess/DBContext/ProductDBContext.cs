@@ -12,8 +12,8 @@ namespace ProductManagement.DataAccess.DBContext
 
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<CategoryDetail> CategoryDetails { get; set; }
-        public virtual DbSet<ProductVariant> ProductVariants { get; set; }
+        public virtual DbSet<GroupAttribute> GroupAttributes { get; set; }
+        public virtual DbSet<GroupAttributeValue> GroupAttributeValues { get; set; }
 
     }
 }

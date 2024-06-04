@@ -21,7 +21,7 @@ namespace CommonLibs
             // https://stackoverflow.com/a/46265018
             const string pattern =
                 "^([a-zA-Z]|" +
-                "\\s|" +
+                @"\s|" +
                 "[àáãạảăắằẳẵặâấầẩẫậ" +
                 "èéẹẻẽêềếểễệ" +
                 "đìíĩỉị" +
@@ -41,7 +41,7 @@ namespace CommonLibs
             if (IsContainHTMLTags(input))
                 return false;
 
-            if (!Regex.IsMatch(pattern, input))
+            if (!Regex.IsMatch(input, pattern))
                 return false;
 
             return true;
@@ -66,6 +66,26 @@ namespace CommonLibs
         {
             Regex tagPattern = new Regex(@"<[^>]+>");
             return tagPattern.IsMatch(input);
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false;
+            }
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -4,9 +4,9 @@ namespace ProductManagement.DataAccess.IServices
 {
     public interface IProductServices
     {
-        List<GetProductReturnData> GetProducts();
-        Task<SaveChangesReturnData> Add(ProductAddRequest product);
-        Task<SaveChangesReturnData> Update(ProductUpdateRequest product);
-        Task<SaveChangesReturnData> Delete(ProductDeleteRequest product);
+        List<Product> GetProducts();
+        Task<SaveChangesReturnData> Add(ProductInsertUpdateRequestData requestData);
+        Task<SaveChangesReturnData> Update(ProductInsertUpdateRequestData requestData);
+        Task<SaveChangesReturnData> Delete(ProductDeleteRequestData requestData);
     }
 }
